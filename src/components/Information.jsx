@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Information = () => {
-  return (
+      const [active, setActive] = useState("exclude")
+
+    return (
     <div className=''>
         <div className='grid '>
              <div className=' flex gap-10 flex-col p-10'>
@@ -32,11 +34,40 @@ const Information = () => {
             <div className='text-gray-400'>Total price over the term</div>
             <div>1,520,184 kr.</div>
        </div>
+<div className='flex border border-white w-[70%] p-1 rounded-full relative overflow-hidden'>
 
-       <div className='flex border border-white  w-[70%] p-3 rounded-4xl'>
-        <div className=' w-[50%] flex  justify-center items-center  bg-white text-black rounded-4xl text-center font-thin font-bold'>Excl. VAT</div>
-        <div className=' w-[50%] flex  justify-center items-center  text-white rounded-4xl text-center font-thin font-bold'>VAT included</div>
-       </div>
+      {/* Sliding Background */}
+      <div
+        className={`absolute top-1 bottom-1 w-[48.5%] rounded-full bg-white transition-all duration-300
+        ${active === "exclude" ? "left-1" : "left-[50%]"}`}
+      ></div>
+
+      {/* Button 1 */}
+      <button
+        onClick={() => setActive("exclude")}
+        className={`w-1/2 z-10 py-2 text-center transition-all duration-300
+        ${active === "exclude"
+            ? "text-black"
+            : "text-white"
+          }`}
+      >
+        Excl. VAT
+      </button>
+
+      {/* Button 2 */}
+      <button
+        onClick={() => setActive("include")}
+        className={`w-1/2 z-10 py-2 text-center transition-all duration-300
+        ${active === "include"
+            ? "text-black"
+            : "text-white"
+          }`}
+      >
+        VAT Included
+      </button>
+
+    </div>
+
             
       
     </div>
